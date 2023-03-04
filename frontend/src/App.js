@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
+import './App.css'
+import axios from 'axios'
+import SignIn from './components/SignIn/SignIn'
+import Register from './components/Register/Register'
+import Navigation from './components/Navigation/Navigation'
 
-function App() {
+const App = () => {
+  const [data, setData] = useState(null);
+  const getPage = () => {
+    axios.get('').then((res) => {
+      setData(res)
+    })
+  }
+
+  const [currentPage, setCurrentPage] = useState('signin')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      {/* <Navigation /> */}
+    { 
+      currentPage === 'signin' ?
+      <SignIn getPage={getPage}/> :
+      <Register />
+    }
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
