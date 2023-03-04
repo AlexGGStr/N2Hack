@@ -5,6 +5,7 @@ import SignIn from './components/SignIn/SignIn'
 import Register from './components/Register/Register'
 import Navigation from './components/Navigation/Navigation'
 
+
 const App = () => {
   const [data, setData] = useState(null);
   const getPage = () => {
