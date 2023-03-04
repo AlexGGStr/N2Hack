@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import 'tachyons';
 import reportWebVitals from './reportWebVitals';
+import { UserContextProvider } from './store/id_context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <UserContextProvider>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </UserContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
