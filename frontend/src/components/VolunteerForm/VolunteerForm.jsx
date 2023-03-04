@@ -1,7 +1,7 @@
 import React from 'react'
 import './VolunteerForm.css'
 
-const VolunteerForm = ({setLastName, setFirstName, savePerson, setCurrentPage}) => {
+const VolunteerForm = ({setLastName, setFirstName, savePerson, setCurrentPage, setUsername}) => {
   return (
     <div className='volunteer-form'>
         <article className="br5 ba b--black-10 mv4 w-100 w-50-m w-25-l mw8 shadow-5 center">
