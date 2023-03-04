@@ -38,7 +38,7 @@ const SignIn = ({getPage}) => {
                     >
                         <FacebookLoginButton/>
                     </LoginSocialFacebook>
-                <button onClick={getPage()}>Buton Demo</button>
+                    <button onClick={() => {getPage()}}>Buton Demo</button>
                 </form>
             </main>
         </article>

@@ -1,17 +1,8 @@
-const { default: mongoose } = require("mongoose");
-const dotenv = require("dotenv");
+const { Sequelize } = require("sequelize");
 
-const db = () => {
-  try {
-    connString = process.env.CONN_STRING.replace(
-      "<username>",
-      process.env.USER_NAME
-    ).replace("<password>", process.env.PASSWORD);
+const sequelize = new Sequelize({
+  dialect: "sqlite",
+  storage: "./sqlite/database.db",
+});
 
-    const conn = mongoose.connect(connString);
-    console.log("Connection succesful");
-  } catch (error) {
-    console.log("Unable to connect");
-  }
-};
-module.exports = db;
+module.exports = sequelize;
