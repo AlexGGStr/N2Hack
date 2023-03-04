@@ -41,14 +41,15 @@ const App = () => {
   const [personType, setPersonType] = useState('')
   const [lastName, setLastName] = useState('')
   const [firstName, setFirstName] = useState('')
+  const [username, setUsername] = useState('')
 
   const savePerson = () => {
+    console.log(email, password, personType, username)
     axios.post('http://localhost:8080/', {
       email: email,
       password: password,
       personType: personType,
-      lastName: lastName,
-      firstName: firstName
+      username: username
     }).then((res) => {
       console.log(res)
     })
@@ -58,15 +59,15 @@ const App = () => {
     if(page === 'signin')
       return <SignIn getPage={getPage} setCurrentPage={setCurrentPage} setEmail={setEmail} setPassword={setPassword}/>
     if(page === 'register')
-      return <Register setCurrentPage={setCurrentPage} setEmail={setEmail} setPassword={setPassword}/>
+      return <Register setCurrentPage={setCurrentPage} setEmail={setEmail} setPassword={setPassword} setUsername={setUsername}/>
     if(page === 'pickformtype')
       return <PickFormTypePage setCurrentPage={setCurrentPage} setPersonType={setPersonType}/>
     if(page === 'volunteerform')
-      return <VolunteerForm setLastName={setLastName} setFirstName={setFirstName} savePerson={savePerson} setCurrentPage={setCurrentPage}/>
+      return <VolunteerForm setLastName={setLastName} setFirstName={setFirstName} savePerson={savePerson} setCurrentPage={setCurrentPage} setUsername={setUsername}/>
     if(page === 'imageuploadform')
       return <ImageUploadForm />
     if(page === 'refugeeform')
-      return <RefugeeForm />
+      return <RefugeeForm setLastName={setLastName} setFirstName={setFirstName}/>
   }
   
   const getPage = () => {
