@@ -9,6 +9,7 @@ import VolunteerForm from "./components/VolunteerForm/VolunteerForm";
 import ImageUploadForm from "./components/ImageUploadForm/ImageUploadForm";
 import RefugeeForm from "./components/RefugeeForm/RefugeeForm";
 
+
 const App = () => {
   const [data, setData] = useState(null);
   const [currentPage, setCurrentPage] = useState("signin");
@@ -89,4 +90,6 @@ const App = () => {
   );
 };
 
+
 export default App;
+
