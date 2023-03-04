@@ -9,7 +9,6 @@ import VolunteerForm from "./components/VolunteerForm/VolunteerForm";
 import ImageUploadForm from "./components/ImageUploadForm/ImageUploadForm";
 import RefugeeForm from "./components/RefugeeForm/RefugeeForm";
 
-
 const App = () => {
   const [data, setData] = useState(null);
   const [currentPage, setCurrentPage] = useState("signin");
@@ -34,14 +33,27 @@ const App = () => {
       });
   };
 
+  const checkLogin = () => {
+    console.log(password, username);
+    axios
+      .get(
+        `http://localhost:8080/user/check?username=${username}&password=${password}`
+      )
+      .then((res) => {
+        if (res.status === 200) console.log("Logged In", res);
+        else console.log("Error");
+      });
+  };
+
   const displayPage = (page) => {
     if (page === "signin")
       return (
         <SignIn
           getPage={getPage}
           setCurrentPage={setCurrentPage}
-          setEmail={setEmail}
+          setUsername={setUsername}
           setPassword={setPassword}
+          checkLogin={checkLogin}
         />
       );
     if (page === "register")
@@ -90,6 +102,4 @@ const App = () => {
   );
 };
 
-
 export default App;
-
