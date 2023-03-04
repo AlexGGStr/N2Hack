@@ -1,0 +1,15 @@
+.navigation-buttons{
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+
+.scale-transformation:hover{
+    transform: scale(1.1);
+}
+
+.display-none{
+    display: none;
+}

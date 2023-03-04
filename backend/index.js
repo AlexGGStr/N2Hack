@@ -9,9 +9,9 @@ const cors = require("cors");
 app.use(cors());
 
 app.get(
-  "/auth/google",
-  passport.authenticate("google", { scope: ["email", "profile"] })
-);
+  "/auth/google", passport.authenticate('google', {
+    scope: [ 'email' ]
+  }));
 
 app.get(
   "/auth/google/callback",

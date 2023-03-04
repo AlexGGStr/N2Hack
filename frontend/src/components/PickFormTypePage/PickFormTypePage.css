@@ -1,0 +1,28 @@
+.earth {
+    margin-left: 150px;
+    height: 200px;
+    width: 200px;
+    cursor: pointer;
+}
+
+.images-form{
+    display: flex;
+    align-items: center;
+}
+
+.ukraine {
+    height: 180px;
+    width: 250px;
+    cursor: pointer;
+}
+
+.PickFormTypePage{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.earth:hover, .ukraine:hover{
+    transform: scale(1.075);
+}
