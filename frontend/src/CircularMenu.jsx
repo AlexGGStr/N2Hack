@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Typewriter from 'typewriter-effect';
+
+
 
 function CircularMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +24,7 @@ function CircularMenu() {
 
     const concatenatedString = selectedCategories.join("=true&");
     console.log(concatenatedString)
-    axios.get(`http://localhost:8080?${concatenatedString}`)
+    axios.get(`http://localhost:8080?${concatenatedString  + "=true"}`)
     .then(response => {
       // handle response data
     })
@@ -34,6 +37,34 @@ function CircularMenu() {
     console.log(selectedCategories);
   };
 
+  const [voiceText, setVoiceText] = useState();
+  
+  const voiceRec = () => {
+
+    const concatenatedString = selectedCategories.join("=true&");
+    //concatenatedString = concatenatedString + "=true";
+    console.log(concatenatedString + "=true")
+    axios.get(`http://localhost:8080?${concatenatedString + "=true"}`)
+    .then(response => {
+      // handle response data
+    })
+    .catch(error => {
+      // handle error
+    });
+
+    
+    const message = "We will win we will win  we will win";
+    let i = 0;
+    let prevText = '';
+    const intervalId = setInterval(() => {
+      prevText = prevText + message.charAt(i);
+      setVoiceText(prevText);
+      i++;
+      if (i === message.length) clearInterval(intervalId);
+    }, 70);
+
+  }
+  
   const radius = 80;
   const center = 100;
   const angle = 360 / options.length;
@@ -43,6 +74,8 @@ function CircularMenu() {
     center - radius * Math.cos(index * angle * Math.PI / 180),
   ]);
 
+ 
+  
   return (
     <div className="circular-menu">
       <svg viewBox="0 0 400 400">
@@ -58,8 +91,11 @@ function CircularMenu() {
           <text x={center} y={center + 5} textAnchor="middle" fill="#fff" fontSize="12px" fontWeight="bold">Find</text>
         </g>
         <g>
-        <rect x={center + radius + 50} y={center - 20} width="80" height="40" fill="#333" rx="4" onClick={toggleMenu} />
+        <rect x={center + radius + 50} y={center - 20} width="80" height="40" fill="#333" rx="4" onClick={voiceRec} />
         <text x={center + radius + 90} y={center + 5} textAnchor="middle" fill="#fff" fontSize="12px" fontWeight="bold">Tell me </text>
+        <text x={center + radius + 90} y={center + 30} textAnchor="middle" fill="#fff" fontSize="6px" onClick={findHome}>
+        {voiceText}
+        </text>
       </g>
       </svg>
     </div>
