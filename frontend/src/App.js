@@ -22,32 +22,83 @@ const App = () => {
   const [username, setUsername] = useState("");
 
   const savePerson = () => {
-    console.log(email, password, personType, username)
-    axios.post('http://localhost:8080/', {
-      email: email,
-      password: password,
-      personType: personType,
-      username: username
-    }).then((res) => {
-      console.log(res)
-    })
-  }
+    console.log(email, password, personType, username);
+    axios
+      .post("http://localhost:8080/user/register", {
+        email: email,
+        password: password,
+        personType: personType,
+        username: username,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  };
+
+  const UserCtx = useContext(UserContext);
+  const checkLogin = () => {
+    console.log(password, username);
+
+    axios
+      .get(
+        `http://localhost:8080/user/check?username=${username}&password=${password}`
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          UserCtx.selectCurrentUser(res.data.id, res.data.kind);
+          console.log("Logged In", res.data);
+        } else console.log("Error");
+      })
+      .then(() => {
+        console.log(UserCtx.currentKind);
+        console.log(UserCtx.userId);
+      });
+  };
 
   const displayPage = (page) => {
-    if(page === 'signin')
-      return <SignIn getPage={getPage} setCurrentPage={setCurrentPage} setEmail={setEmail} setPassword={setPassword}/>
-    if(page === 'register')
-      return <Register setCurrentPage={setCurrentPage} setEmail={setEmail} setPassword={setPassword} setUsername={setUsername}/>
-    if(page === 'pickformtype')
-      return <PickFormTypePage setCurrentPage={setCurrentPage} setPersonType={setPersonType}/>
-    if(page === 'volunteerform')
-      return <VolunteerForm setLastName={setLastName} setFirstName={setFirstName} savePerson={savePerson} setCurrentPage={setCurrentPage} setUsername={setUsername}/>
-    if(page === 'imageuploadform')
-      return <ImageUploadForm />
-    if(page === 'refugeeform')
-      return <RefugeeForm setLastName={setLastName} setFirstName={setFirstName}/>
-  }
-  
+    if (page === "signin")
+      return (
+        <SignIn
+          getPage={getPage}
+          setCurrentPage={setCurrentPage}
+          setUsername={setUsername}
+          setPassword={setPassword}
+          checkLogin={checkLogin}
+        />
+      );
+    if (page === "register")
+      return (
+        <Register
+          setCurrentPage={setCurrentPage}
+          setEmail={setEmail}
+          setPassword={setPassword}
+          setUsername={setUsername}
+        />
+      );
+    if (page === "pickformtype")
+      return (
+        <PickFormTypePage
+          setCurrentPage={setCurrentPage}
+          setPersonType={setPersonType}
+        />
+      );
+    if (page === "volunteerform")
+      return (
+        <VolunteerForm
+          setLastName={setLastName}
+          setFirstName={setFirstName}
+          savePerson={savePerson}
+          setCurrentPage={setCurrentPage}
+          setUsername={setUsername}
+        />
+      );
+    if (page === "imageuploadform") return <ImageUploadForm />;
+    if (page === "refugeeform")
+      return (
+        <RefugeeForm setLastName={setLastName} setFirstName={setFirstName} />
+      );
+  };
+
   const getPage = () => {
     axios.get("http://localhost:8080/auth/google").then((res) => {
       setData(res.data);
