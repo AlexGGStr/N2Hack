@@ -6,6 +6,7 @@ const ImageUploadForm = () => {
   const [isDraggedOver, setIsDraggedOver] = useState(false);
   const [isImageDropped, setIsImageDropped] = useState(false);
   const [dataLabel, setDataLabel] = useState('');
+  const [imagesArray, setImagesArray] = useState([]);
   const inputRef = useRef();
 
   const handleDefaultPropagation = e => {
@@ -29,6 +30,7 @@ const ImageUploadForm = () => {
     }
     setIsImageDropped(true);
     setDataLabel(file.name);
+    setImagesArray(arr => [...arr, file]);
   }
   return (
     <div className='image-upload-form' id='image-upload-form'>
@@ -65,7 +67,6 @@ const ImageUploadForm = () => {
               onDrop={e => {
                 handleDefaultPropagation(e);
                 dropEvent(e.dataTransfer);
-                console.log(e.dataTransfer.files[0])
               }}
               className={`input-meme ${isDraggedOver ? 'input-meme--over' : ''} ${isImageDropped ? 'remove-border' : ''}`}
               >

@@ -8,6 +8,7 @@ import PickFormTypePage from './components/PickFormTypePage/PickFormTypePage'
 import VolunteerForm from './components/VolunteerForm/VolunteerForm'
 import ImageUploadForm from './components/ImageUploadForm/ImageUploadForm'
 import RefugeeForm from './components/RefugeeForm/RefugeeForm'
+import ImagesListPage from './components/ImagesListPage/ImagesListPage'
 
 
 const App = () => {
@@ -32,9 +33,19 @@ const App = () => {
     })
   }
 
+  const checkLogin = () => {
+    console.log(password, username)
+    axios.get(`http://localhost:8080/user/check?username=${username}&password=${password}`).then((res) => {
+      if(res.status === 200)
+        console.log('Logged In', res)
+      else
+        console.log('Error')
+    })
+  }
+
   const displayPage = (page) => {
     if(page === 'signin')
-      return <SignIn getPage={getPage} setCurrentPage={setCurrentPage} setEmail={setEmail} setPassword={setPassword}/>
+      return <SignIn getPage={getPage} setCurrentPage={setCurrentPage} setUsername={setUsername} setPassword={setPassword} checkLogin={checkLogin}/>
     if(page === 'register')
       return <Register setCurrentPage={setCurrentPage} setEmail={setEmail} setPassword={setPassword} setUsername={setUsername}/>
     if(page === 'pickformtype')
@@ -45,6 +56,8 @@ const App = () => {
       return <ImageUploadForm />
     if(page === 'refugeeform')
       return <RefugeeForm setLastName={setLastName} setFirstName={setFirstName}/>
+    if(page === 'imageslistpage')
+      return <ImagesListPage />
   }
   
   const getPage = () => {
