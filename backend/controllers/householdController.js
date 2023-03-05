@@ -72,4 +72,12 @@ const filteredHouseholds = async (req, res) => {
   }
 };
 
-module.exports = { createHousehold, filteredHouseholds };
+const myHouseholds = async (req, res) => {
+  try {
+    var allHouseholds = await Household.findAll();
+    allHouseholds = allHouseholds.filter((x) => x.UserId == req.params.id);
+    res.status(200).json(allHouseholds);
+  } catch (error) {}
+};
+
+module.exports = { createHousehold, filteredHouseholds, myHouseholds };
