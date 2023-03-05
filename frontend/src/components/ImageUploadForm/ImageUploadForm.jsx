@@ -13,6 +13,7 @@ const ImageUploadForm = () => {
     e.preventDefault();
     e.stopPropagation();
   };
+
   const dropEvent = data => {
     if(data.files.length > 1){
       console.log("Please drop just one photo");
@@ -30,7 +31,7 @@ const ImageUploadForm = () => {
     }
     setIsImageDropped(true);
     setDataLabel(file.name);
-    setImagesArray(arr => [...arr, file]);
+    setImagesArray([...imagesArray, file]);
   }
   return (
     <div className='image-upload-form' id='image-upload-form'>
