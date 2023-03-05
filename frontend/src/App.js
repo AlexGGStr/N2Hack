@@ -22,6 +22,8 @@ const App = () => {
   const [firstName, setFirstName] = useState("");
   const [username, setUsername] = useState("");
   const [propertiesArray, setPropertiesArray] = useState([])
+  const [savedId, setSavedId] = useState('')
+  const [savedKind, setSavedKind] = useState('')
 
   const savePerson = () => {
     console.log(email, password, personType, username);
@@ -39,27 +41,26 @@ const App = () => {
 
   const UserCtx = useContext(UserContext);
   const getProperties = () => {
-      axios.get((`http://localhost:8080/household/myHouseholds/${UserCtx.userId}`).then((res) => {
+      console.log('savedId', savedId)
+      axios.get(`http://localhost:8080/household/myHouseholds/1`).then((res) => {
           setPropertiesArray(res.data)
-      }))
+          console.log(res.data)
+      })
   }
   const checkLogin = () => {
-    console.log(password, username);
-
     axios
       .get(
         `http://localhost:8080/user/check?username=${username}&password=${password}`
       )
       .then((res) => {
         if (res.status === 200) {
-          UserCtx.selectCurrentUser(res.data.id, res.data.kind);
-          console.log("Logged In", res.data);
+          console.log('RASPUNSURI', res.data.id, res.data.kind)
+          setSavedId(res.data.id)
+          setSavedKind(res.data.kind)
+          console.log('VERIFICARE savedId: ', savedId)
         } else console.log("Error");
       })
-      .then(() => {
-        console.log(UserCtx.currentKind);
-        console.log(UserCtx.userId);
-      });
+      console.log('VERIFICARE 2: ', savedId)
   };
 
   const displayPage = (page) => {
@@ -72,7 +73,6 @@ const App = () => {
           setPassword={setPassword}
           checkLogin={checkLogin}
           getProperties={getProperties}
-          kind={UserCtx.currentKind}
         />
       );
     if (page === "register")
@@ -101,7 +101,8 @@ const App = () => {
           setUsername={setUsername}
         />
       );
-    if (page === "imageuploadform") return <ImageUploadForm />;
+    if (page === "imageuploadform") 
+      return <ImageUploadForm />;
     if (page === "refugeeform")
       return (
         <RefugeeForm setLastName={setLastName} setFirstName={setFirstName} />

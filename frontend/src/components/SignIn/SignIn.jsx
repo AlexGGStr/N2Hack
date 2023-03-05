@@ -4,7 +4,7 @@ import './SignIn.css';
 import { FacebookLoginButton } from 'react-social-login-buttons'
 import { LoginSocialFacebook } from 'reactjs-social-login'
 
-const SignIn = ({getPage, setCurrentPage, setUsername, setPassword, checkLogin, getProperties, kind}) => {
+const SignIn = ({getPage, setCurrentPage, setUsername, setPassword, checkLogin, getProperties}) => {
     return (
         <article className="br5 ba b--black-10 mv4 w-100 w-50-m w-25-l mw8 shadow-5 center">
             <main className="pa4 black-120">
@@ -22,12 +22,9 @@ const SignIn = ({getPage, setCurrentPage, setUsername, setPassword, checkLogin, 
                     </fieldset>
                     <div className="">
                     <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="button" value="Sign in" onClick={() => {
+                        setCurrentPage('homeslist');
                         checkLogin();
-                        console.log(kind)
-                        if(kind === 'local'){
-                            setCurrentPage('homeslist');
-                            getProperties();
-                        }
+                        getProperties();
                     }}/>
                     </div>
                     <LoginSocialFacebook

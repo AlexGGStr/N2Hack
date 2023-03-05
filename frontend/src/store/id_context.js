@@ -12,12 +12,8 @@ export function UserContextProvider(props) {
   const [selectedKind, setSelectedKind] = useState({});
 
   function selectCurrentUserHandler(id, kind) {
-    setSelectedUser(() => {
-      return id;
-    });
-    setSelectedKind(() => {
-      return kind;
-    });
+    setSelectedUser(id);
+    setSelectedKind(kind);
   }
 
   function isCurrentUserHandler(userId) {
