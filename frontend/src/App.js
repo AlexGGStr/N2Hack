@@ -11,6 +11,7 @@ import RefugeeForm from "./components/RefugeeForm/RefugeeForm";
 import { useContext } from "react";
 import UserContext from "./store/id_context";
 import HomesList from "./components/HomesList/HomesList";
+import CircularMenu from "./CircularMenu";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -21,7 +22,7 @@ const App = () => {
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [username, setUsername] = useState("");
-  const [propertiesArray, setPropertiesArray] = useState([])
+  const [propertiesArray, setPropertiesArray] = useState([]);
 
   const savePerson = () => {
     console.log(email, password, personType, username);
@@ -39,10 +40,13 @@ const App = () => {
 
   const UserCtx = useContext(UserContext);
   const getProperties = () => {
-      axios.get((`http://localhost:8080/household/myHouseholds/${UserCtx.userId}`).then((res) => {
-          setPropertiesArray(res.data)
-      }))
-  }
+    axios
+      .get(`http://localhost:8080/household/myHouseholds/${UserCtx.userId}`)
+      .then((res) => {
+        setPropertiesArray(res.data);
+        console.log(res.data);
+      });
+  };
   const checkLogin = () => {
     console.log(password, username);
 
@@ -106,8 +110,7 @@ const App = () => {
       return (
         <RefugeeForm setLastName={setLastName} setFirstName={setFirstName} />
       );
-    if(page === "homeslist")
-      return <HomesList /> 
+    if (page === "homeslist") return <HomesList />;
   };
 
   const getPage = () => {
@@ -120,6 +123,7 @@ const App = () => {
       <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
       {displayPage(currentPage)}
     </div>
+    //<CircularMenu />
   );
 };
 
