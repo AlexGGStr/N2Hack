@@ -8,6 +8,8 @@ import PickFormTypePage from "./components/PickFormTypePage/PickFormTypePage";
 import VolunteerForm from "./components/VolunteerForm/VolunteerForm";
 import ImageUploadForm from "./components/ImageUploadForm/ImageUploadForm";
 import RefugeeForm from "./components/RefugeeForm/RefugeeForm";
+import { useContext } from "react";
+import UserContext from "./store/id_context";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -22,7 +24,7 @@ const App = () => {
   const savePerson = () => {
     console.log(email, password, personType, username);
     axios
-      .post("http://localhost:8080/", {
+      .post("http://localhost:8080/user/register", {
         email: email,
         password: password,
         personType: personType,
@@ -33,15 +35,23 @@ const App = () => {
       });
   };
 
+  const UserCtx = useContext(UserContext);
   const checkLogin = () => {
     console.log(password, username);
+
     axios
       .get(
         `http://localhost:8080/user/check?username=${username}&password=${password}`
       )
       .then((res) => {
-        if (res.status === 200) console.log("Logged In", res);
-        else console.log("Error");
+        if (res.status === 200) {
+          UserCtx.selectCurrentUser(res.data.id, res.data.kind);
+          console.log("Logged In", res.data);
+        } else console.log("Error");
+      })
+      .then(() => {
+        console.log(UserCtx.currentKind);
+        console.log(UserCtx.userId);
       });
   };
 
