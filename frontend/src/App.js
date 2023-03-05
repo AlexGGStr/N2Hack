@@ -10,6 +10,7 @@ import ImageUploadForm from "./components/ImageUploadForm/ImageUploadForm";
 import RefugeeForm from "./components/RefugeeForm/RefugeeForm";
 import { useContext } from "react";
 import UserContext from "./store/id_context";
+import HomesList from "./components/HomesList/HomesList";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -20,6 +21,7 @@ const App = () => {
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [username, setUsername] = useState("");
+  const [propertiesArray, setPropertiesArray] = useState([])
 
   const savePerson = () => {
     console.log(email, password, personType, username);
@@ -36,6 +38,11 @@ const App = () => {
   };
 
   const UserCtx = useContext(UserContext);
+  const getProperties = () => {
+      axios.get((`http://localhost:8080/household/myHouseholds/${UserCtx.userId}`).then((res) => {
+          setPropertiesArray(res.data)
+      }))
+  }
   const checkLogin = () => {
     console.log(password, username);
 
@@ -64,6 +71,8 @@ const App = () => {
           setUsername={setUsername}
           setPassword={setPassword}
           checkLogin={checkLogin}
+          getProperties={getProperties}
+          kind={UserCtx.currentKind}
         />
       );
     if (page === "register")
@@ -97,6 +106,8 @@ const App = () => {
       return (
         <RefugeeForm setLastName={setLastName} setFirstName={setFirstName} />
       );
+    if(page === "homeslist")
+      return <HomesList /> 
   };
 
   const getPage = () => {
