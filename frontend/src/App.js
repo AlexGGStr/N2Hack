@@ -54,13 +54,12 @@ const App = () => {
     })
   }
   return (
-    // <div className='App'>
-    //   <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage}/>
-    // { 
-    //   displayPage(currentPage)
-    // }
-    // </div>
-    <CircularMenu/>
+    <div className='App'>
+      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+    { 
+      displayPage(currentPage)
+    }
+    </div>
   )
 }
 

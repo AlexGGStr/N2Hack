@@ -1,0 +1,302 @@
+{
+    "results": [
+      {
+        "id": "8EA738F33636BCED625CC06C0119EDE6",
+        "name": "Centrul Național de Tenis",
+        "address": "Bulevardul Pierre de Coubertin, București, Romania",
+        "phone_number": "+40756161633",
+        "website": "http://www.frt.ro/",
+        "location": {
+          "lat": 44.439327,
+          "lng": 26.152149
+        },
+        "types": [
+          "health",
+          "school",
+          "stadium",
+          "store"
+        ],
+        "distance": 31
+      },
+      {
+        "id": "0E41DF77A0E75BA54E92F1DBF8D84036",
+        "name": "Technological School St. Pantelimon",
+        "address": "Strada Hambarului 12A, București 021904, Romania",
+        "phone_number": "+40212559943",
+        "website": "http://www.liceul-sfpantelimon.ro/",
+        "location": {
+          "lat": 44.440411,
+          "lng": 26.153138
+        },
+        "types": [
+          "school",
+          "secondary_school"
+        ],
+        "distance": 122
+      },
+      {
+        "id": "2D70D258F93FD8BA5799E72B30A793D9",
+        "name": "Colegiul Tehnic Dinicu Golescu",
+        "address": "Strada Hambarului 2-11, București 077085, Romania",
+        "location": {
+          "lat": 44.440694,
+          "lng": 26.151827
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 124
+      },
+      {
+        "id": "54AA9CDC0E2E8D692B540CF329D779AD",
+        "name": "Gradinita Montessori Monterra",
+        "address": "Strada Vatra Luminoasă 118, București 021919, Romania",
+        "phone_number": "+40743119481",
+        "website": "http://www.scoalamonterra.ro/",
+        "location": {
+          "lat": 44.441036,
+          "lng": 26.151101
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 178
+      },
+      {
+        "id": "DAA1AC643106C9172DD2EA7E421C5E1E",
+        "name": "Liceul Tehnologic Special\"Regina Elisabeta\"",
+        "address": "Strada Vatra Luminoasă 108, București 077085, Romania",
+        "phone_number": "+40212506285",
+        "location": {
+          "lat": 44.440732,
+          "lng": 26.14973
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 227
+      },
+      {
+        "id": "18931C211B3D5CCB334E782B6E8AEA4D",
+        "name": "Gradinita Maya si Prietenii",
+        "address": "Strada Herța nr 32 A, București 022175, Romania",
+        "phone_number": "+40755359162",
+        "website": "http://mayasiprietenii.ro/",
+        "location": {
+          "lat": 44.439363,
+          "lng": 26.155341
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 259
+      },
+      {
+        "id": "6AB993B93856E75E830065478912807B",
+        "name": "Middle School No. 4",
+        "address": "Strada Herța 14A, București 022174, Romania",
+        "phone_number": "+40212556425",
+        "website": "http://www.scoala4buc.ro/",
+        "location": {
+          "lat": 44.438955,
+          "lng": 26.155252
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 261
+      },
+      {
+        "id": "D7DABC8A356DC37C93C3E280F63F9256",
+        "name": "Grădinița Monterra",
+        "address": "Strada Sergent Șerbănică Vasile 6, București, Romania",
+        "website": "https://scoalamonterra.ro/",
+        "location": {
+          "lat": 44.43805,
+          "lng": 26.155041
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 291
+      },
+      {
+        "id": "E23CA41653751F0E7C8EE93E4B38D450",
+        "name": "Grădinița Castel",
+        "address": "Bulevardul Pierre de Coubertin 1, București, Romania",
+        "phone_number": "+40212504180",
+        "location": {
+          "lat": 44.442006,
+          "lng": 26.150287
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 304
+      },
+      {
+        "id": "2F57F0D938E726999FAA34980A04E91C",
+        "name": "Lill'put",
+        "address": "Strada Sarafinești 29, București 021832, Romania",
+        "website": "http://www.lillput.ro/",
+        "location": {
+          "lat": 44.44135,
+          "lng": 26.148683
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 334
+      },
+      {
+        "id": "53ED6438BC6984DBB090A3585D768A33",
+        "name": "Bazin înot Olimpia",
+        "address": "Șoseaua Iancului 128A, București 021715, Romania",
+        "phone_number": "+40761633663",
+        "website": "https://inot-sport.ro/bazinul-olimpia/",
+        "location": {
+          "lat": 44.442004,
+          "lng": 26.149354
+        },
+        "types": [
+          "health",
+          "school"
+        ],
+        "distance": 345
+      },
+      {
+        "id": "5B12CDB9C71F4CAF55103AF66F2A7F32",
+        "name": "Middle School No. 51",
+        "address": "Strada Herța 1, București 022171, Romania",
+        "phone_number": "+40212554060",
+        "website": "http://www.scoala51.ro/",
+        "location": {
+          "lat": 44.44174,
+          "lng": 26.155662
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 370
+      },
+      {
+        "id": "E3127098D8D55DF55736C28DEB14F158",
+        "name": "Scoala de dans pentru copii Ballet Show Dance Art",
+        "address": "Bulevardul Chișinău, București, Romania",
+        "phone_number": "+40761334520",
+        "website": "http://www.facebook.com/Balletshowdanceart/",
+        "location": {
+          "lat": 44.440857,
+          "lng": 26.156543
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 380
+      },
+      {
+        "id": "B065BC42EEE026567C58A1827BEDE10F",
+        "name": "Scoala de Vara Afterschool Voi Reusi",
+        "address": "Bulevardul Chișinău nr 6-8, București, Romania",
+        "phone_number": "+40727540913",
+        "website": "http://www.ed4lead.ro/",
+        "location": {
+          "lat": 44.440935,
+          "lng": 26.156582
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 386
+      },
+      {
+        "id": "F5B6605C39F0BF1565B4BF48A34B6A70",
+        "name": "Cursuri inot LCD Club - Olimpia",
+        "address": "Șoseaua Iancului 128A, București 021716, Romania",
+        "phone_number": "+40771326755",
+        "website": "https://initiereinot.ro/bazin-inot-olimpia/",
+        "location": {
+          "lat": 44.442732,
+          "lng": 26.148272
+        },
+        "types": [
+          "health",
+          "school"
+        ],
+        "distance": 463
+      },
+      {
+        "id": "B49243D98D161B0D02B6BA9FC0120BE8",
+        "name": "ADSDDASD",
+        "address": "Șoseaua Pantelimon 220, București, Romania",
+        "location": {
+          "lat": 44.443866,
+          "lng": 26.150148
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 500
+      },
+      {
+        "id": "74D5E65C84FD35833D10B374CB60AAEA",
+        "name": "Kindergarten Number 236",
+        "address": "Aleea Ilia 1, București, Romania",
+        "phone_number": "+40212554620",
+        "website": "http://gradinita-236.eduteca.ro/",
+        "location": {
+          "lat": 44.443996,
+          "lng": 26.154387
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 522
+      },
+      {
+        "id": "AD76BB36ACF3EA066D44EFF8D23A698C",
+        "name": "Secondary School Number 49",
+        "address": "Strada Vatra Luminoasă 99, București 021914, Romania",
+        "phone_number": "+40212502444",
+        "website": "http://www.scoala49.ro/",
+        "location": {
+          "lat": 44.440211,
+          "lng": 26.145324
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 543
+      },
+      {
+        "id": "6B4250CEE07945739645C5A24AE94335",
+        "name": "Waldorf - Grădiniță, școală și liceu de stat",
+        "address": "Strada Soldat Marin Savu 29, București 022191, Romania",
+        "phone_number": "+40212553051",
+        "website": "http://www.ltwaldorf.ro/",
+        "location": {
+          "lat": 44.441334,
+          "lng": 26.158516
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 545
+      },
+      {
+        "id": "45ED0A00BE64ACAAAE466D48B03A9B20",
+        "name": "Gradinita i-Kids Garden",
+        "address": "Strada Soldat Marin Savu 57, București 022191, Romania",
+        "phone_number": "+40743355355",
+        "website": "https://www.i-kids.ro/",
+        "location": {
+          "lat": 44.440214,
+          "lng": 26.159199
+        },
+        "types": [
+          "school"
+        ],
+        "distance": 568
+      }
+    ]
+  }
