@@ -11,6 +11,8 @@ const User = require("./models/userModel");
 const userRouter = require("./routes/userRouter");
 const householdRouter = require("./routes/houseHoldRouter");
 const sequelize = require("./config/db");
+const { spawn } = require("child_process");
+let { PythonShell } = require("python-shell");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -18,6 +20,16 @@ app.use(cors());
 
 app.use("/user", userRouter);
 app.use("/household", householdRouter);
+app.use("/piton", (req, res) => {
+  let options = {
+    args: ["school"],
+  };
+
+  PythonShell.run("./config/script.py", options, function (err, results) {
+    console.log(results);
+    console.log("Done");
+  });
+});
 
 app.get("/create", async (req, res, next) => {
   try {
