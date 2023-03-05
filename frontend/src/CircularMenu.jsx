@@ -63,12 +63,16 @@ function CircularMenu() {
       if (i === message.length) clearInterval(intervalId);
     }, 70);
 
+    const myArray = ["school", "chuch", "bank", "hospital"];
+    setSelectedCategories(myArray)
+    console.log(selectedCategories)
+
   }
   
   const radius = 80;
   const center = 100;
   const angle = 360 / options.length;
-  const buttonRadius = 16;
+  const buttonRadius = 20;
   const buttonPositions = options.map((option, index) => [
     center + radius * Math.sin(index * angle * Math.PI / 180),
     center - radius * Math.cos(index * angle * Math.PI / 180),
@@ -82,7 +86,7 @@ function CircularMenu() {
         <circle cx={center} cy={center} r={radius} fill="#fff" stroke="#333" strokeWidth="2" />
         {buttonPositions.map((position, index) => (
           <g key={index}>
-            <circle cx={position[0]} cy={position[1]} r={buttonRadius} fill={selectedCategories.includes(options[index]) ? '#ff0' : '#333'} onClick={() => handleClick(options[index])} />
+            <circle cx={position[0]} cy={position[1]} r={buttonRadius} fill={selectedCategories.includes(options[index]) ? '#5f0' : '#333'} onClick={() => handleClick(options[index])} />
             <text x={position[0]} y={position[1] + 5} textAnchor="middle" fill="#fff" fontSize="12px" fontWeight="bold">{options[index]}</text>
           </g>
         ))}

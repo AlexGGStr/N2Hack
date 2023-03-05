@@ -8,6 +8,7 @@ import PickFormTypePage from './components/PickFormTypePage/PickFormTypePage'
 import VolunteerForm from './components/VolunteerForm/VolunteerForm'
 import ImageUploadForm from './components/ImageUploadForm/ImageUploadForm'
 import RefugeeForm from './components/RefugeeForm/RefugeeForm'
+import CircularMenu from './CircularMenu'
 
 
 const App = () => {
@@ -53,12 +54,13 @@ const App = () => {
     })
   }
   return (
-    <div className='App'>
-      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage}/>
-    { 
-      displayPage(currentPage)
-    }
-    </div>
+    // <div className='App'>
+    //   <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+    // { 
+    //   displayPage(currentPage)
+    // }
+    // </div>
+    <CircularMenu/>
   )
 }
 
