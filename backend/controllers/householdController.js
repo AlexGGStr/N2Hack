@@ -66,6 +66,9 @@ const filteredHouseholds = async (req, res) => {
     if (req.query.restaurant == "true") {
       allHouseholds = allHouseholds.filter((x) => x.restaurant >= 2);
     }
+    if (req.query.bank == "true") {
+      allHouseholds = allHouseholds.filter((x) => x.bank >= 2);
+    }
     res.json(allHouseholds);
   } else {
     res.status(404).json({ message: "No Household Found" });

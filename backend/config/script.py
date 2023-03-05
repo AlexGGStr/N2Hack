@@ -20,7 +20,10 @@ with sr.Microphone() as source:
     # Use Google Speech Recognition to transcribe the audio
     try:
         text = r.recognize_google(audio)
+        text = text.lower()
         print(f"You said: {text}")
+        with open("output.txt", "w") as f:
+            f.write(str(text))
     except sr.UnknownValueError:
         print("Could not understand audio")
     except sr.RequestError as e:
@@ -30,7 +33,9 @@ with sr.Microphone() as source:
     args_list = []
 
     for arg in sys.argv[1:]:
+        print(arg)
         if arg in text:
-            with open("output.txt", "w") as f:
-                f.write(arg)
+            args_list.append(arg)
+    #with open("output.txt", "w") as f:
+    #    f.write(str(text))
 

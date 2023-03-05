@@ -20,14 +20,68 @@ app.use(cors());
 
 app.use("/user", userRouter);
 app.use("/household", householdRouter);
-app.use("/piton", (req, res) => {
-  let options = {
-    args: ["school"],
-  };
+// app.use("/piton", async (req, res) => {
+//   let options = {
+//     pythonPath: "python3",
+//     args: ["school"],
+//   };
 
-  PythonShell.run("./config/script.py", options, function (err, results) {
-    console.log(results);
-    console.log("Done");
+//   await PythonShell.run("./config/script.py", options, function (err, results) {
+//     console.log(results);
+//     console.log("Done");
+//   });
+// });
+
+app.get("/pythonScript", (req, res) => {
+  // Arguments to pass to the Python script
+  let argList = [];
+
+  if (req.query.school == "true") {
+    argList.push("school");
+  }
+  if (req.query.church == "true") {
+    argList.push("church");
+  }
+  if (req.query.hospital == "true") {
+    argList.push("hospital");
+  }
+  if (req.query.restaurant == "true") {
+    argList.push("restaurant");
+  }
+  if (req.query.bank == "true") {
+    argList.push("bank");
+  }
+  //const pythonArgs = ["arg1", "arg2", "arg3"];
+
+  // Spawn a new process to run the Python script
+  const pythonProcess = spawn("python3", ["./config/script.py", ...argList]);
+
+  // Listen for output from the Python script
+  pythonProcess.stdout.on("data", (data) => {
+    console.log(`stdout: ${data}`);
+  });
+
+  // Listen for errors from the Python script
+  pythonProcess.stderr.on("data", (data) => {
+    console.error(`stderr: ${data}`);
+  });
+
+  // Listen for the Python script to exit
+  pythonProcess.on("close", (code) => {
+    console.log(`child process exited with code ${code}`);
+  });
+
+  // Send a response to the client
+
+  const fs = require("fs");
+
+  fs.readFile("./config/output.txt", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(data);
+    res.send(data);
   });
 });
 

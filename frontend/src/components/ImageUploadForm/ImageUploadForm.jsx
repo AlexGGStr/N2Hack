@@ -6,12 +6,14 @@ const ImageUploadForm = () => {
   const [isDraggedOver, setIsDraggedOver] = useState(false);
   const [isImageDropped, setIsImageDropped] = useState(false);
   const [dataLabel, setDataLabel] = useState('');
+  const [imagesArray, setImagesArray] = useState([]);
   const inputRef = useRef();
 
   const handleDefaultPropagation = e => {
     e.preventDefault();
     e.stopPropagation();
   };
+
   const dropEvent = data => {
     if(data.files.length > 1){
       console.log("Please drop just one photo");
@@ -29,6 +31,7 @@ const ImageUploadForm = () => {
     }
     setIsImageDropped(true);
     setDataLabel(file.name);
+    setImagesArray([...imagesArray, file]);
   }
   return (
     <div className='image-upload-form' id='image-upload-form'>
@@ -65,7 +68,6 @@ const ImageUploadForm = () => {
               onDrop={e => {
                 handleDefaultPropagation(e);
                 dropEvent(e.dataTransfer);
-                console.log(e.dataTransfer.files[0])
               }}
               className={`input-meme ${isDraggedOver ? 'input-meme--over' : ''} ${isImageDropped ? 'remove-border' : ''}`}
               >
