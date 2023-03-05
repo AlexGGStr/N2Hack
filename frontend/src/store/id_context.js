@@ -1,18 +1,22 @@
 import { createContext, useState } from "react";
 
 const UserContext = createContext({
-  currentUser: {},
+  currentKind: null,
   userId: -1,
-  selectCurrentUser: (newSelectedUser) => {},
+  selectCurrentUser: (newSelectedUser, newKind) => {},
   isCurrentUser: (userId) => {},
 });
 
 export function UserContextProvider(props) {
   const [selectedUser, setSelectedUser] = useState({});
+  const [selectedKind, setSelectedKind] = useState({});
 
-  function selectCurrentUserHandler(newSelectedUser) {
+  function selectCurrentUserHandler(id, kind) {
     setSelectedUser(() => {
-      return newSelectedUser;
+      return id;
+    });
+    setSelectedKind(() => {
+      return kind;
     });
   }
 
@@ -21,7 +25,8 @@ export function UserContextProvider(props) {
   }
 
   const context = {
-    userId: selectedUser.id,
+    currentKind: selectedKind,
+    userId: selectedUser,
     selectCurrentUser: selectCurrentUserHandler,
     isCurrentUser: isCurrentUserHandler,
   };
