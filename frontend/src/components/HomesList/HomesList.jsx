@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import './HomesList.css'
 
-const HomesList = () => {
+const HomesList = ({propertiesArray}) => {
     return (
     <div className='HomesList'>
         {/* {

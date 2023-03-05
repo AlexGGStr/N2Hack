@@ -11,6 +11,7 @@ import RefugeeForm from "./components/RefugeeForm/RefugeeForm";
 import { useContext } from "react";
 import UserContext from "./store/id_context";
 import HomesList from "./components/HomesList/HomesList";
+import ImagesListPage from "./components/ImagesListPage/ImagesListPage";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -21,9 +22,11 @@ const App = () => {
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [username, setUsername] = useState("");
-  const [propertiesArray, setPropertiesArray] = useState([])
-  const [savedId, setSavedId] = useState('')
-  const [savedKind, setSavedKind] = useState('')
+  const [propertiesArray, setPropertiesArray] = useState([]);
+  const [savedId, setSavedId] = useState("");
+  const [savedKind, setSavedKind] = useState("");
+  const [imagesListLength, setImagesListLength] = useState(0);
+  const [imagesArray, setImagesArray] = useState([]);
 
   const savePerson = () => {
     console.log(email, password, personType, username);
@@ -41,12 +44,14 @@ const App = () => {
 
   const UserCtx = useContext(UserContext);
   const getProperties = () => {
-      console.log('savedId', savedId)
-      axios.get(`http://localhost:8080/household/myHouseholds/1`).then((res) => {
-          setPropertiesArray(res.data)
-          console.log(res.data)
-      })
-  }
+    console.log("savedId", savedId);
+    axios
+      .get(`http://localhost:8080/household/myHouseholds/1`)
+      .then((res) => {
+        setPropertiesArray(res.data);
+        console.log(res.data);
+      });
+  };
   const checkLogin = () => {
     axios
       .get(
@@ -54,13 +59,13 @@ const App = () => {
       )
       .then((res) => {
         if (res.status === 200) {
-          console.log('RASPUNSURI', res.data.id, res.data.kind)
-          setSavedId(res.data.id)
-          setSavedKind(res.data.kind)
-          console.log('VERIFICARE savedId: ', savedId)
+          console.log("RASPUNSURI", res.data.id, res.data.kind);
+          setSavedId(res.data.id);
+          setSavedKind(res.data.kind);
+          console.log("VERIFICARE savedId: ", savedId);
         } else console.log("Error");
-      })
-      console.log('VERIFICARE 2: ', savedId)
+      });
+    console.log("VERIFICARE 2: ", savedId);
   };
 
   const displayPage = (page) => {
@@ -101,14 +106,22 @@ const App = () => {
           setUsername={setUsername}
         />
       );
-    if (page === "imageuploadform") 
-      return <ImageUploadForm />;
+    if (page === "imageuploadform")
+      return (
+        <ImageUploadForm
+          setImagesListLength={setImagesListLength}
+          setImagesArray={setImagesArray}
+          imagesArray={imagesArray}
+        />
+      );
     if (page === "refugeeform")
       return (
         <RefugeeForm setLastName={setLastName} setFirstName={setFirstName} />
       );
-    if(page === "homeslist")
-      return <HomesList /> 
+    // if(page === "homeslist")
+    //   return <HomesList propertiesArray={propertiesArray}/>
+    if (page === "imageslistpage")
+      return <ImagesListPage imagesArray={imagesArray} />;
   };
 
   const getPage = () => {
@@ -118,7 +131,11 @@ const App = () => {
   };
   return (
     <div className="App">
-      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Navigation
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        imagesListLength={imagesListLength}
+      />
       {displayPage(currentPage)}
     </div>
   );

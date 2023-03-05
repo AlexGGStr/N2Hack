@@ -2,11 +2,11 @@ import React, {useState, useRef} from 'react'
 import UkraineFlagIcon from '../../assets/flag-of-ukraine.png'
 import './ImageUploadForm.css'
 
-const ImageUploadForm = () => {
+const ImageUploadForm = ({setImagesListLength, setImagesArray, imagesArray}) => {
   const [isDraggedOver, setIsDraggedOver] = useState(false);
   const [isImageDropped, setIsImageDropped] = useState(false);
   const [dataLabel, setDataLabel] = useState('');
-  const [imagesArray, setImagesArray] = useState([]);
+  const [lastFile, setLastFile] = useState(null)
   const inputRef = useRef();
 
   const handleDefaultPropagation = e => {
@@ -15,23 +15,27 @@ const ImageUploadForm = () => {
   };
 
   const dropEvent = data => {
-    if(data.files.length > 1){
-      console.log("Please drop just one photo");
-      return;
-    }
     const file = data.files[0];
     if(!file.type.startsWith('image/')){
       console.log("Please insert an image");
       return;
     }
 		const reader = new FileReader();
-		reader.readAsDataURL(file);
-    reader.onload = () => {
-      inputRef.current.style.backgroundImage = `url('${reader.result}')`;
-    }
-    setIsImageDropped(true);
-    setDataLabel(file.name);
-    setImagesArray([...imagesArray, file]);
+		// reader.readAsDataURL(file);
+    // reader.onload = () => {
+    //   inputRef.current.style.backgroundImage = `url('${reader.result}')`;
+    // }
+    // setIsImageDropped(true);
+    // setDataLabel(file.name);
+    // setImagesArray([...imagesArray, file]);
+    // setImagesListLength(imagesArray.length + 1);
+    // console.log(file)
+
+    reader.readAsArrayBuffer(file)
+    reader.onload = function() {
+    // you can keep blob or save blob to another position
+    const blob = new Blob([reader.result])
+}
   }
   return (
     <div className='image-upload-form' id='image-upload-form'>
