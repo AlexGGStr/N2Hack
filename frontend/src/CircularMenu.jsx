@@ -24,7 +24,7 @@ function CircularMenu() {
 
     const concatenatedString = selectedCategories.join("=true&");
     console.log(concatenatedString)
-    axios.get(`http://localhost:8080?${concatenatedString  + "=true"}`)
+    axios.get(`http://localhost:8085/household/allHouseholds?${concatenatedString  + "=true"}`)
     .then(response => {
       // handle response data
     })
@@ -44,7 +44,7 @@ function CircularMenu() {
     const concatenatedString = selectedCategories.join("=true&");
     //concatenatedString = concatenatedString + "=true";
     console.log(concatenatedString + "=true")
-    axios.get(`http://localhost:8080?${concatenatedString + "=true"}`)
+    axios.get(`http://localhost:8085?${concatenatedString + "=true"}`)
     .then(response => {
       // handle response data
     })
